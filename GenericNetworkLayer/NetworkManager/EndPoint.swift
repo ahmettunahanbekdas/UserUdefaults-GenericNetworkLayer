@@ -27,7 +27,6 @@ enum HTTPMethods: String {
 }
 
 
-
 enum EndPoint {
     case getCharacter(page: Int)
     case detailToCharacter(id: Int)
@@ -35,7 +34,6 @@ enum EndPoint {
 
 extension EndPoint: EndPointDelegate {
 
-    
     var baseURL: String {
         return "https://rickandmortyapi.com/api"
     }
@@ -51,9 +49,9 @@ extension EndPoint: EndPointDelegate {
     
     var httpMethod: HTTPMethods {
         switch self {
-        case .getCharacter(page: let page):
+        case .getCharacter(_):
             return .get
-        case .detailToCharacter(id: let id):
+        case .detailToCharacter(_):
             return .get
         }
     }
@@ -73,6 +71,4 @@ extension EndPoint: EndPointDelegate {
         
         return request
     }
-    
-    
 }

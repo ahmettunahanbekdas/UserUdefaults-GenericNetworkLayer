@@ -7,13 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //ss
+        self.view.backgroundColor = .blue
     }
-
-
 }
 

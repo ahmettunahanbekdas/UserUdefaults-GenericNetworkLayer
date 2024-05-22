@@ -15,6 +15,7 @@ protocol HomeViewDelegate: AnyObject {
 class HomeView: UIViewController {
     private var characterCollectionView: UICollectionView!
     lazy var viewModel = HomeViewModel()
+    var page = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +40,6 @@ extension HomeView: HomeViewDelegate {
        }
 }
 
-
 extension HomeView: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.characters.count
@@ -52,6 +52,23 @@ extension HomeView: UICollectionViewDataSource, UICollectionViewDelegate {
         let character = viewModel.characters[indexPath.item]
         cell.configure(with: character)
         return cell
+    }
+    
+  //  func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+  //      if indexPath.row == self.viewModel.characters.count - 1 {
+  //          self.viewModel.getCharacter()
+  //      }
+  //  }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let offSetY = scrollView.contentOffset.y //Scroll değerimiz
+        let contentHeight = scrollView.contentSize.height //Tüm scroll uzunluğu
+        let height = characterCollectionView.frame.height // CollectionView uzunluğu
+        
+        guard  contentHeight != 0 else {return}
+        if offSetY >= contentHeight - (2 * height) {
+            viewModel.getCharacter()
+        }
     }
 }
 

@@ -35,6 +35,8 @@ extension HomeViewModel: HomeViewModelDelegate {
             case .success(let character):
                 self.characters.append(contentsOf: character.results!)
                 view?.reloadData()
+                page += 1
+                print(characters.count)
             case .failure(let error):
                 self.error = error
                 print(error.localizedDescription)

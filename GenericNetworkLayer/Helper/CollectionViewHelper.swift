@@ -10,10 +10,9 @@ import UIKit
 enum CollectionViewHelper {
     static func collectionViewFlowLayout() -> UICollectionViewFlowLayout{
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 2, height: UIScreen.main.bounds.height / 2)
+        layout.scrollDirection = .vertical
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width , height: UIScreen.main.bounds.height)
         layout.minimumInteritemSpacing = 10
-        
         return layout
     }
 }

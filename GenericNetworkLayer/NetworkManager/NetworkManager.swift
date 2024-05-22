@@ -7,9 +7,8 @@
 
 import Foundation
 
-
 protocol NetworkManagerDelegate {
-    func request <T: Codable> (_ endPoint: EndPoint, completion: @escaping (Result<T, NetworkError>) -> Void)
+    func request<T: Codable>(_ endPoint: EndPoint, completion: @escaping (Result<T, NetworkError>) -> Void)
 }
 
 class NetworkManager: NetworkManagerDelegate {
@@ -20,7 +19,7 @@ class NetworkManager: NetworkManagerDelegate {
     let jsonDecoder = JSONDecoder()
     
     func request<T: Codable>(_ endPoint: EndPoint, completion: @escaping (Result<T, NetworkError>) -> Void) {
-        
+
         let task = URLSession.shared.dataTask(with: endPoint.request()) { [weak self] data, response, error in
             //MARK: SELF
             guard let self = self else {
@@ -37,12 +36,14 @@ class NetworkManager: NetworkManagerDelegate {
                 completion(.failure(.responseError))
                 return
             }
-            let handleResponse = handleNetworkRequest(response: response)
+            let handleResponse = self.handleNetworkRequest(response: response)
             switch handleResponse {
             case .success(let callbackResponse):
                 print(callbackResponse)
-            case .failure(_):
-                completion(.failure(.responseError))
+            case .failure(let networkError):
+                print("HTTP Status Code: \(response.statusCode)")
+                completion(.failure(networkError))
+                return
             }
             //MARK: DATA
             guard let data = data else {
@@ -50,12 +51,15 @@ class NetworkManager: NetworkManagerDelegate {
                 return
             }
             do {
-                let jsonData = try jsonDecoder.decode(T.self, from: data)
+                let jsonData = try self.jsonDecoder.decode(T.self, from: data)
                 DispatchQueue.main.async {
                     completion(.success(jsonData))
                 }
-            }catch {
-                completion(.failure(.dataError))
+            } catch {
+              //  print("Catch: \(error.localizedDescription)")
+              //  print("Data: \(String(data: data, encoding: .utf8) ?? "No data")")
+              //  completion(.failure(.dataError))
+                print("Catch")
             }
         }
         task.resume()
@@ -63,20 +67,18 @@ class NetworkManager: NetworkManagerDelegate {
     
     private func handleNetworkRequest(response: HTTPURLResponse) -> Result<String, NetworkError> {
         switch response.statusCode {
-           case 200...299:
-                .success("Response Success")
-           case 400:
-                .failure(.badRequest)
-           case 401:
-                .failure(.unauthorized)
-           case 404:
-                .failure(.notFound)
-           case 500...599:
-                .failure(.serverError)
-           default:
-                .failure(.unknownError)
-           }
+        case 200...299:
+            return .success("Response Success")
+        case 400:
+            return .failure(.badRequest)
+        case 401:
+            return .failure(.unauthorized)
+        case 404:
+            return .failure(.notFound)
+        case 500...599:
+            return .failure(.serverError)
+        default:
+            return .failure(.unknownError)
+        }
     }
-    
-    
 }

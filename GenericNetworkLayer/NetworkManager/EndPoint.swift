@@ -33,7 +33,7 @@ enum EndPoint {
 }
 
 extension EndPoint: EndPointDelegate {
-
+    
     var baseURL: String {
         return "https://rickandmortyapi.com/api"
     }
@@ -55,20 +55,17 @@ extension EndPoint: EndPointDelegate {
             return .get
         }
     }
-
+    
     var headers: [String : String]? {
         return nil
     }
     
     func request() -> URLRequest {
-        guard var components = URLComponents(string: baseURL) else { fatalError("Components Error") }
-        components.path = path
+        guard let components = URLComponents(string: baseURL + path) else { fatalError("Components Error") }
+        guard let url = components.url else { fatalError("Components URL Error") }
         
-        guard let url = components.url else { fatalError("Components URL Errror") }
         var request = URLRequest(url: url)
-        
         request.httpMethod = httpMethod.rawValue
-        
         return request
     }
 }

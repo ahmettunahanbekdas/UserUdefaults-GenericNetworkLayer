@@ -7,25 +7,29 @@
 
 import Foundation
 
+// MARK: - Welcome
 struct CharacterModel: Codable {
     let info: Info?
-    let results: [Results]?
+    let results: [Character]?
 }
 
+// MARK: - Info
 struct Info: Codable {
-    let page: Int?
+    let count, pages: Int?
+    let next: String?
 }
 
-struct Results: Codable {
+// MARK: - Result
+struct Character: Codable {
     let id: Int?
     let name: String?
-    let image: String?
     let gender: Gender?
+    let image: String?
 }
 
 enum Gender: String, Codable {
     case female = "Female"
-    case genderless = "Genderless"
     case male = "Male"
     case unknown = "unknown"
 }
+

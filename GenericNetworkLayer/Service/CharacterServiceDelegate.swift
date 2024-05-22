@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol CharacterToDetailsServiceDelegate {
+protocol CharacterServiceDelegate {
     func getCharacter(page: Int, completion: @escaping (Result<CharacterModel, NetworkError>) -> Void)
 }
 
-class CharacterToDetailsService: CharacterToDetailsServiceDelegate {
+class CharacterService: CharacterServiceDelegate {
     func getCharacter(page: Int, completion: @escaping (Result<CharacterModel, NetworkError>) -> Void) {
         let endPoint = EndPoint.getCharacter(page: page)
         NetworkManager.shared.request(endPoint, completion: completion)

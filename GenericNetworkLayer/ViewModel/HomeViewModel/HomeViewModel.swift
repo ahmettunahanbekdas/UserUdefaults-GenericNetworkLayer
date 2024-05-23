@@ -9,6 +9,7 @@ import Foundation
 
 protocol HomeViewModelDelegate {
     var view: HomeViewDelegate? { get set }
+    func viewDidLoad()
 }
 
 final class HomeViewModel {
@@ -16,6 +17,7 @@ final class HomeViewModel {
     var characters: [Character] = []
     var error: Error?
     private let service = CharacterService()
+    private let detailService = CharacterDetailsService()
     private var page = 1
 }
 
@@ -43,6 +45,21 @@ extension HomeViewModel: HomeViewModelDelegate {
                 self.error = error
                 print(error.localizedDescription)
             }
+        }
+    }
+    
+    func didSelectedCharacter(id: Int) {
+        detailService.getCharacterDetails(id: id) { [weak self] returnedCharacter in
+            guard let self = self else {
+                return
+            }
+            switch returnedCharacter {
+            case .success(let characterDetails):
+                self.view?.toDetailsView(character: characterDetails)
+            case .failure(let error):
+                print(error)
+            }
+            
         }
     }
 }

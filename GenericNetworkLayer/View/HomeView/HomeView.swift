@@ -10,11 +10,12 @@ import UIKit
 protocol HomeViewDelegate: AnyObject {
     func configureCollectionView()
     func reloadData()
+    func toDetailsView(character: CharacterDetailsModel)
 }
 
 class HomeView: UIViewController {
-    private var characterCollectionView: UICollectionView!
     lazy var viewModel = HomeViewModel()
+    private var characterCollectionView: UICollectionView!
     var page = 1
     
     override func viewDidLoad() {
@@ -26,6 +27,7 @@ class HomeView: UIViewController {
 }
 
 extension HomeView: HomeViewDelegate {
+    
     func configureCollectionView() {
         characterCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: CollectionViewHelper.collectionViewFlowLayout())
         characterCollectionView.backgroundColor = .systemBackground
@@ -38,6 +40,13 @@ extension HomeView: HomeViewDelegate {
     func reloadData() {
            characterCollectionView.reloadData()
        }
+    
+    func toDetailsView(character: CharacterDetailsModel ) {
+        DispatchQueue.main.async {
+            let detailsView = DetailsView(character: character)
+            self.navigationController?.pushViewController(detailsView, animated: true)
+        }
+    }
 }
 
 extension HomeView: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -50,7 +59,7 @@ extension HomeView: UICollectionViewDataSource, UICollectionViewDelegate {
             return UICollectionViewCell()
         }
         let character = viewModel.characters[indexPath.item]
-        cell.configure(with: character)
+        cell.setCharacter(with: character)
         return cell
     }
     
@@ -62,22 +71,22 @@ extension HomeView: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let didSelectedCharacter = viewModel.characters[indexPath.item].id
-        print(didSelectedCharacter)
+        
+        guard let didSelectedCharacter = didSelectedCharacter else {
+            printContent("didSelectedCharacter Error")
+            return
+        }
+        viewModel.didSelectedCharacter(id: didSelectedCharacter)
     }
-    
-  //  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-  //      let offSetY = scrollView.contentOffset.y //Scroll değerimiz
-  //      let contentHeight = scrollView.contentSize.height //Tüm scroll uzunluğu
-  //      let height = characterCollectionView.frame.height // CollectionView uzunluğu
-  //
-  //      guard  contentHeight != 0 else {return}
-  //      if offSetY >= contentHeight - (2 * height) {
-  //          viewModel.getCharacter()
-  //      }
-  //  }
 }
 
-
-
-
-
+//  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//      let offSetY = scrollView.contentOffset.y //Scroll değerimiz
+//      let contentHeight = scrollView.contentSize.height //Tüm scroll uzunluğu
+//      let height = characterCollectionView.frame.height // CollectionView uzunluğu
+//
+//      guard  contentHeight != 0 else {return}
+//      if offSetY >= contentHeight - (2 * height) {
+//          viewModel.getCharacter()
+//      }
+//  }

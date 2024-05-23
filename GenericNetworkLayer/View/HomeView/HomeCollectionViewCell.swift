@@ -20,24 +20,22 @@ final class HomeCollectionViewCell: UICollectionViewCell {
     
     private lazy var characterNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "wss"
         return label
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubview(characterImageView)
-        contentView.addSubview(characterNameLabel)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        configureCell()
+        configureImageView()
+        configureLabel()
     }
     
-    func configure(with model: Character) {
-        let characterPath = model.image
-        guard let url = URL(string: characterPath!) else {
+    func setCharacter(with model: Character) {
+        let characterImage = model.image
+        guard let url = URL(string: characterImage!) else {
             return
         }
         characterImageView.sd_setImage(with: url)
@@ -47,27 +45,31 @@ final class HomeCollectionViewCell: UICollectionViewCell {
     }
     
     
-    func configureCell() {
-        
+    func configureImageView() {
+        contentView.addSubview(characterImageView)
         characterImageView.translatesAutoresizingMaskIntoConstraints = false
-        characterNameLabel.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             characterImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.dWith / 30),
             characterImageView.widthAnchor.constraint(equalToConstant: CGFloat.dWith / 3),
             characterImageView.heightAnchor.constraint(equalToConstant: CGFloat.dWith / 3),
-            
+        ])
+    }
+    
+    func configureLabel() {
+        contentView.addSubview(characterNameLabel)
+        characterNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
             characterNameLabel.leadingAnchor.constraint(equalTo: characterImageView.trailingAnchor, constant: CGFloat.dWith / 15),
             characterNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat.dWith / 15),
             characterNameLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
-
         ])
-        
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
 

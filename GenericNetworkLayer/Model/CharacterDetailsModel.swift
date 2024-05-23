@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+
+struct CharacterDetailsModel: Codable {
+    var id: Int?
+    var name: String?
+    var species: String?
+    var gender: String?
+    var image: String?
+}

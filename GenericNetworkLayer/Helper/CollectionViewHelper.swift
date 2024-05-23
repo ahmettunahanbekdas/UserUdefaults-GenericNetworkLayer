@@ -11,8 +11,8 @@ enum CollectionViewHelper {
     static func collectionViewFlowLayout() -> UICollectionViewFlowLayout{
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width , height: UIScreen.main.bounds.height)
-        layout.minimumInteritemSpacing = 10
+        layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 6)
+        layout.minimumLineSpacing = UIScreen.main.bounds.width / 4
         return layout
     }
 }

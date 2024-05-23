@@ -24,7 +24,7 @@ extension HomeViewModel: HomeViewModelDelegate {
         view?.configureCollectionView()
         getCharacter()
     }
-    
+
     func getCharacter() {
         service.getCharacter(page: page) { [weak self] result in
             guard let self = self else {
@@ -35,8 +35,10 @@ extension HomeViewModel: HomeViewModelDelegate {
             case .success(let character):
                 self.characters.append(contentsOf: character.results!)
                 view?.reloadData()
+                if page == 7 {
+                    page = 9
+                }
                 page += 1
-                print(characters.count)
             case .failure(let error):
                 self.error = error
                 print(error.localizedDescription)

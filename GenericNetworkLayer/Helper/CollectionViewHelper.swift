@@ -12,7 +12,7 @@ enum CollectionViewHelper {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height / 6)
-        layout.minimumLineSpacing = UIScreen.main.bounds.width / 4
+        layout.minimumLineSpacing = UIScreen.main.bounds.width / 30
         return layout
     }
 }

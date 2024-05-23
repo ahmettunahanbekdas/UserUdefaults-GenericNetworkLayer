@@ -54,12 +54,16 @@ extension DetailsView: DetailsViewDelegate {
     
     func configureImageView(with character: CharacterDetailsModel) {
         view.addSubview(characterImageView)
-        let characterImage = character.image
-        guard let url = URL(string: characterImage!) else {
+    
+        guard let characterImage = character.image else {
+            print("characterImage Error")
+            return
+        }
+        
+        guard let url = URL(string: characterImage) else {
             return
         }
         characterImageView.sd_setImage(with: url)
-        
         characterImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate(([
             characterImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -78,6 +82,4 @@ extension DetailsView: DetailsViewDelegate {
             characterNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ]))
     }
-    
-    
 }

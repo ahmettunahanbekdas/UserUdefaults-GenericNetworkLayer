@@ -9,6 +9,7 @@ import UIKit
 import SDWebImage
 
 final class HomeCollectionViewCell: UICollectionViewCell {
+    
     static let identifier = "HomeCollectionViewCell"
     
     private lazy var characterImageView: UIImageView = {
@@ -31,11 +32,17 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
         configureImageView()
         configureLabel()
+        configureCell()
     }
     
     func setCharacter(with model: Character) {
-        let characterImage = model.image
-        guard let url = URL(string: characterImage!) else {
+        guard let characterImage = model.image else {
+            print("characterImage Error")
+            return
+        }
+
+        guard let url = URL(string: characterImage) else {
+            print("url Error")
             return
         }
         characterImageView.sd_setImage(with: url)
@@ -44,13 +51,13 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         characterNameLabel.text = characterLabel
     }
     
-    
     func configureImageView() {
         contentView.addSubview(characterImageView)
         characterImageView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             characterImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: CGFloat.dWith / 30),
+            characterImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             characterImageView.widthAnchor.constraint(equalToConstant: CGFloat.dWith / 3),
             characterImageView.heightAnchor.constraint(equalToConstant: CGFloat.dWith / 3),
         ])
@@ -65,6 +72,13 @@ final class HomeCollectionViewCell: UICollectionViewCell {
             characterNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: CGFloat.dWith / 15),
             characterNameLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
         ])
+    }
+    
+    func configureCell() {
+        layer.borderWidth = 4.0 // Kenarlık genişliği (isteğe bağlı olarak değiştirilebilir)
+        layer.borderColor = UIColor.label.cgColor // Kenarlık rengi (isteğe bağlı olarak değiştirilebilir)
+        layer.cornerRadius = 10
+        layer.masksToBounds = true
     }
     
     required init?(coder: NSCoder) {

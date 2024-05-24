@@ -19,8 +19,8 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    private lazy var characterNameLabel: UILabel = {
-        let label = UILabel()
+    private lazy var characterNameLabel: CharacterTitleLabel = {
+        let label = CharacterTitleLabel(fontSize: CGFloat.dWith / 20)
         return label
     }()
     
@@ -75,9 +75,9 @@ final class HomeCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCell() {
-        layer.borderWidth = 4.0 // Kenarlık genişliği (isteğe bağlı olarak değiştirilebilir)
-        layer.borderColor = UIColor.label.cgColor // Kenarlık rengi (isteğe bağlı olarak değiştirilebilir)
-        layer.cornerRadius = 10
+        layer.borderWidth = CGFloat.dWith / 100
+        layer.borderColor = UIColor.label.cgColor
+        layer.cornerRadius = CGFloat.dWith / 20
         layer.masksToBounds = true
     }
     

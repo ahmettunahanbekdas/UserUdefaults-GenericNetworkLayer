@@ -27,6 +27,9 @@ extension DetailsViewModel: DetailsViewModelDelegate {
     func viewDidLoad() {
         view?.configureImageView(with: character)
         view?.configureNameLabel()
+        view?.configureSpeciesLabel()
+        view?.configureStatusLabel()
+        view?.configureGenderLabel()
     }
     
     

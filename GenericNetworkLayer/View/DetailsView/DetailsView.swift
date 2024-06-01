@@ -13,6 +13,7 @@ protocol DetailsViewDelegate: AnyObject {
     func configureSpeciesLabel()
     func configureStatusLabel()
     func configureGenderLabel()
+    func configureFavoritesButton()
 }
 
 class DetailsView: UIViewController {
@@ -56,6 +57,11 @@ class DetailsView: UIViewController {
         return label
     }()
     
+    private lazy var favoritesButton: UIBarButtonItem = {
+        let favoriteButton = UIBarButtonItem(image: UIImage(systemName: "star"), style: .plain, target: self, action: #selector(favoriteButtonTapped))
+        return favoriteButton
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.view = self
@@ -69,6 +75,8 @@ class DetailsView: UIViewController {
 }
 
 extension DetailsView: DetailsViewDelegate {
+    
+    
     
     func configureImageView(with character: CharacterDetailsModel) {
         view.addSubview(characterImageView)
@@ -95,7 +103,7 @@ extension DetailsView: DetailsViewDelegate {
         characterNameLabel.text = nameLabel
         characterNameLabel.textAlignment = .center
         characterNameLabel.numberOfLines = 0
-
+        
         characterNameLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             characterNameLabel.topAnchor.constraint(equalTo: characterImageView.bottomAnchor, constant: CGFloat.dWith / 20),
@@ -151,4 +159,14 @@ extension DetailsView: DetailsViewDelegate {
             characterGenderLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -CGFloat.dWith / 40)
         ])
     }
+    
+    func configureFavoritesButton() {
+        navigationItem.rightBarButtonItem = self.favoritesButton
+    }
+    
+    @objc func favoriteButtonTapped() {
+        viewModel.addFavorites()
+        print("Tapped favorites button")
+    }
+    
 }

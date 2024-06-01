@@ -33,6 +33,7 @@ final class HomeCollectionViewCell: UICollectionViewCell {
         configureImageView()
         configureLabel()
         configureCell()
+        
     }
     
     func setCharacter(with model: Character) {

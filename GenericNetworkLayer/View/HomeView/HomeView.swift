@@ -27,7 +27,6 @@ class HomeView: UIViewController {
 }
 
 extension HomeView: HomeViewDelegate {
-    
     func configureCollectionView() {
         characterCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: CollectionViewHelper.collectionViewFlowLayout())
         characterCollectionView.backgroundColor = .systemBackground

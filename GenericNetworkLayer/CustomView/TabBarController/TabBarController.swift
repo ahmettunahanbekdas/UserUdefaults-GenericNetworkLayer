@@ -19,24 +19,17 @@ final class TabBarController: UITabBarController {
     
     func createHomeNC() -> UINavigationController {
         let homeView = HomeView()
-        let homeViewModel = HomeViewModel()
-        homeView.title = "Home"
         homeView.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "house.fill"), tag: 0)
         
         return UINavigationController(rootViewController: homeView)
     }
     
     func createFavoritesNC() -> UINavigationController {
-        let favoritesView = FavoritesView()
         let favoritesViewModel = FavoritesViewModel()
-        favoritesView.title = "Favorites"
+        let favoritesView = FavoritesView(viewModel: favoritesViewModel)
         favoritesView.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 1)
         
         return UINavigationController(rootViewController: favoritesView)
     }
-    
-    
-    
-    
 }
 

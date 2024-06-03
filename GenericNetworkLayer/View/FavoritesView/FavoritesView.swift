@@ -17,7 +17,7 @@ class FavoritesView: UIViewController {
 
     private var viewModel: FavoritesViewModel!
     private var favoritesCollectionView: UICollectionView!
-    
+    private var selectedCharacter: CombinedCharacter?
     
     init(viewModel: FavoritesViewModel) {
         super.init(nibName: nil, bundle: nil)
@@ -56,8 +56,8 @@ extension FavoritesView: FavoritesViewDelegate {
     func configureCollectionView() {
         favoritesCollectionView = UICollectionView(frame: view.bounds, collectionViewLayout: CollectionViewHelper.createFavoritesFlowLayout())
         favoritesCollectionView.backgroundColor = .clear
-        //favoritesCollectionView.showsVerticalScrollIndicator = false
-        favoritesCollectionView.register(FavoritesCollectionViewCell.self, forCellWithReuseIdentifier: FavoritesCollectionViewCell.identifier)
+        favoritesCollectionView.showsVerticalScrollIndicator = false
+        favoritesCollectionView.register(FavoritesCell.self, forCellWithReuseIdentifier: FavoritesCell.identifier)
         favoritesCollectionView.translatesAutoresizingMaskIntoConstraints = false
 
         favoritesCollectionView?.delegate = self
@@ -73,7 +73,19 @@ extension FavoritesView: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoritesCollectionViewCell.identifier, for: indexPath) as! FavoritesCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoritesCell.identifier, for: indexPath) as! FavoritesCell
+        cell.setCell(character: viewModel.favoriteCharacter[indexPath.item])
         return cell
     }
 }
+
+extension FavoritesView: FavoritesCellDelegate {
+
+    
+}
+
+
+
+
+    
+

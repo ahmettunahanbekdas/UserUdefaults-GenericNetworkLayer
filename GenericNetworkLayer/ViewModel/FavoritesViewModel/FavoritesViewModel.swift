@@ -24,6 +24,7 @@ extension FavoritesViewModel: FavoritesViewModelDelegate {
     func viewDidLoad() {
         view?.configureVC()
         view?.configureCollectionView()
+
     }
     
     func viewWillAppear() {
@@ -45,4 +46,15 @@ extension FavoritesViewModel: FavoritesViewModelDelegate {
             }
         }
     }
+    
+    func removeFavoriteCharacter(_ character: CombinedCharacter) {
+            UserDefaultsService.updateFavorites(favorite: character, actionType: .remove) { [weak self] error in
+                if let error = error {
+                    print("Failed to remove character: \(error)")
+                    return
+                }
+                self?.getFavoriteCharacters()
+            }
+        }
+    
 }

@@ -8,15 +8,19 @@
 import UIKit
 import SDWebImage
 
-protocol FavoriteCellDelegate {
-    
+protocol FavoritesCellDelegate: AnyObject {
 }
 
-class FavoritesCollectionViewCell: UICollectionViewCell {
+class FavoritesCell: UICollectionViewCell {
     static let identifier = "favortiteCell"
+    weak var delegate: FavoritesCellDelegate?
+    private var character: CombinedCharacter?
     
     let characterImageView: UIImageView = {
         let image = UIImageView()
+        image.contentMode = .scaleAspectFill
+        image.clipsToBounds = true
+        
         return image
     }()
     
@@ -33,12 +37,20 @@ class FavoritesCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureCell()
-        setCell()
     }
     
-    func setCell() {
-        characterLabel.text = "model.name"
-        characterImageView.backgroundColor = .label
+    func setCell(character: CombinedCharacter) {
+        DispatchQueue.main.async {
+            self.characterLabel.text = character.name
+            self.characterImageView.backgroundColor = .label
+            
+            guard let url = URL(string: character.image ?? "") else {
+                print("URL Error")
+                return
+            }
+            self.characterImageView.sd_setImage(with: url)
+            
+        }
     }
     
     private func configureCell() {
@@ -47,12 +59,10 @@ class FavoritesCollectionViewCell: UICollectionViewCell {
         addSubview(characterImageView)
         addSubview(characterLabel)
         addSubview(unfavoriteButton)
-
+        
         
         characterLabel.textAlignment = .center
-        
-        layer.cornerRadius = CGFloat.dWith / 20
-        layer.borderColor = UIColor.secondaryLabel.cgColor
+        layer.borderColor = UIColor.label.cgColor  // Label renginde sınır rengi
         layer.borderWidth = 2
         
         let largeConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular, scale: .large)
@@ -65,28 +75,29 @@ class FavoritesCollectionViewCell: UICollectionViewCell {
         characterImageView.translatesAutoresizingMaskIntoConstraints = false
         characterLabel.translatesAutoresizingMaskIntoConstraints = false
         unfavoriteButton.translatesAutoresizingMaskIntoConstraints = false
-
+        
         
         NSLayoutConstraint.activate([
-            characterImageView.topAnchor.constraint(equalTo: topAnchor, constant: 2 * padding),
-            characterImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
-            characterImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
+            characterImageView.topAnchor.constraint(equalTo: topAnchor),
+            characterImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            characterImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            characterImageView.bottomAnchor.constraint(equalTo: characterLabel.topAnchor, constant: -padding),
             
-            characterLabel.leadingAnchor.constraint(equalTo: characterImageView.leadingAnchor),
-            characterLabel.trailingAnchor.constraint(equalTo: characterImageView.trailingAnchor),
-            characterLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -4 * padding),
+            characterLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
+            characterLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
+            characterLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -padding),
             characterLabel.heightAnchor.constraint(equalToConstant: 28),
             
             unfavoriteButton.topAnchor.constraint(equalTo: topAnchor, constant: padding),
             unfavoriteButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
             unfavoriteButton.widthAnchor.constraint(equalToConstant: 30),
-            unfavoriteButton.heightAnchor.constraint(equalToConstant: 30),
+            unfavoriteButton.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
     
     
     @objc func deleteButtonTapped() {
-        print("Delete")
+       print("Delete")
     }
     
     required init?(coder: NSCoder) {

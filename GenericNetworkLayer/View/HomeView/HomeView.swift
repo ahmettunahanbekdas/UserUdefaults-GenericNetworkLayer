@@ -33,7 +33,7 @@ extension HomeView: HomeViewDelegate {
         characterCollectionView.isScrollEnabled = true
         characterCollectionView.dataSource = self
         characterCollectionView.delegate = self
-        characterCollectionView.register(HomeCollectionViewCell.self, forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
+        characterCollectionView.register(HomeCell.self, forCellWithReuseIdentifier: HomeCell.identifier)
         view.addSubview(characterCollectionView)
     }
     func reloadData() {
@@ -54,7 +54,7 @@ extension HomeView: UICollectionViewDataSource, UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCollectionViewCell.identifier, for: indexPath) as? HomeCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCell.identifier, for: indexPath) as? HomeCell else {
             return UICollectionViewCell()
         }
         let character = viewModel.characters[indexPath.item]

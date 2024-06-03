@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-final class HomeCollectionViewCell: UICollectionViewCell {
+final class HomeCell: UICollectionViewCell {
     
     static let identifier = "HomeCollectionViewCell"
     
@@ -37,19 +37,22 @@ final class HomeCollectionViewCell: UICollectionViewCell {
     }
     
     func setCharacter(with model: Character) {
-        guard let characterImage = model.image else {
-            print("characterImage Error")
-            return
-        }
+        DispatchQueue.main.async {
+            guard let characterImage = model.image else {
+                print("characterImage Error")
+                return
+            }
 
-        guard let url = URL(string: characterImage) else {
-            print("url Error")
-            return
+            guard let url = URL(string: characterImage) else {
+                print("url Error")
+                return
+            }
+            self.characterImageView.sd_setImage(with: url)
+            
+            let characterLabel = model.name
+            self.characterNameLabel.text = characterLabel
         }
-        characterImageView.sd_setImage(with: url)
-        
-        let characterLabel = model.name
-        characterNameLabel.text = characterLabel
+      
     }
     
     func configureImageView() {

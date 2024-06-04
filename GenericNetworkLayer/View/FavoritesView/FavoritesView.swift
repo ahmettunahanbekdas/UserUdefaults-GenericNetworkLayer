@@ -75,14 +75,10 @@ extension FavoritesView: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoritesCell.identifier, for: indexPath) as! FavoritesCell
         cell.setCell(character: viewModel.favoriteCharacter[indexPath.item])
-        return cell
+         return cell
     }
 }
 
-extension FavoritesView: FavoritesCellDelegate {
-
-    
-}
 
 
 

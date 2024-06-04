@@ -9,12 +9,14 @@ import UIKit
 import SDWebImage
 
 protocol FavoritesCellDelegate: AnyObject {
+    func didTapDeleteButton(selectedForDelete: CombinedCharacter)
 }
 
 class FavoritesCell: UICollectionViewCell {
     static let identifier = "favortiteCell"
+    private var favoriteCharacter: CombinedCharacter?
     weak var delegate: FavoritesCellDelegate?
-    private var character: CombinedCharacter?
+    
     
     let characterImageView: UIImageView = {
         let image = UIImageView()
@@ -40,6 +42,7 @@ class FavoritesCell: UICollectionViewCell {
     }
     
     func setCell(character: CombinedCharacter) {
+        self.favoriteCharacter = character
         DispatchQueue.main.async {
             self.characterLabel.text = character.name
             self.characterImageView.backgroundColor = .label
@@ -60,9 +63,8 @@ class FavoritesCell: UICollectionViewCell {
         addSubview(characterLabel)
         addSubview(unfavoriteButton)
         
-        
         characterLabel.textAlignment = .center
-        layer.borderColor = UIColor.label.cgColor  // Label renginde sınır rengi
+        layer.borderColor = UIColor.label.cgColor
         layer.borderWidth = 2
         
         let largeConfig = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular, scale: .large)
@@ -97,7 +99,12 @@ class FavoritesCell: UICollectionViewCell {
     
     
     @objc func deleteButtonTapped() {
-       print("Delete")
+        guard let selectedForDelete = favoriteCharacter else {
+            print("selecteForDelete Error")
+            return
+        }
+        delegate?.didTapDeleteButton(selectedForDelete: selectedForDelete)
+        
     }
     
     required init?(coder: NSCoder) {

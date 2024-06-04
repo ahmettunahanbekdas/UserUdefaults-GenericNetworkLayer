@@ -32,7 +32,6 @@ extension DetailsViewModel: DetailsViewModelDelegate {
         view?.configureStatusLabel()
         view?.configureGenderLabel()
         view?.configureFavoritesButton()
-        printFavorites()
     }
     
     func addFavorites() {
@@ -48,17 +47,6 @@ extension DetailsViewModel: DetailsViewModelDelegate {
             }
             DispatchQueue.main.async {
                 print("Error: \(error.localizedDescription)")
-            }
-        }
-    }
-
-    func printFavorites() {
-        UserDefaultsService.getFavorites { result in
-            switch result {
-            case .success(let favorites):
-                print("Favorites: \(favorites.count)")
-            case .failure(let error):
-                print("Failed to get favorites: \(error.localizedDescription)")
             }
         }
     }

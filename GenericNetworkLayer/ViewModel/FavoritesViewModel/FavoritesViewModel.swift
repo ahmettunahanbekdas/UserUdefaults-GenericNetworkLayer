@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 protocol FavoritesViewModelDelegate {
     var view: FavoritesViewDelegate? { get set }
     func viewDidLoad()
@@ -34,7 +33,7 @@ extension FavoritesViewModel: FavoritesViewModelDelegate {
     func getFavoriteCharacters() {
         UserDefaultsService.getFavorites { [weak self] result in
             guard let self = self else {
-                print("self Error")
+                print("Self Error")
                 return
             }
             switch result {
@@ -47,7 +46,16 @@ extension FavoritesViewModel: FavoritesViewModelDelegate {
         }
     }
     
-    func deleteFavoriteCharacter(_ character: CombinedCharacter) {
-        
-    }
+    func deleteFavoriteCharacter(character: CombinedCharacter) {
+            UserDefaultsService.updateFavorites(favorite: character, actionType: .remove) { [weak self] error in
+                guard let self = self else { return }
+                if error == nil {
+                    if let index = self.favoriteCharacter.firstIndex(where: { $0.name == character.name }) {
+                        self.favoriteCharacter.remove(at: index)
+                    }
+                } else {
+                    print("Failed to remove favorite character: \(error!)")
+                }
+            }
+        }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E430EEA2C0F58EF00E09841 /* MakeAlertHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E430EE92C0F58EF00E09841 /* MakeAlertHelper.swift */; };
 		0E5B7CF52BFE25C10014025E /* CGFloat+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5B7CF42BFE25C10014025E /* CGFloat+Ext.swift */; };
 		0E5B7CF92BFF5FBD0014025E /* DetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5B7CF82BFF5FBD0014025E /* DetailsView.swift */; };
 		0E5B7CFB2BFF5FC80014025E /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5B7CFA2BFF5FC80014025E /* DetailsViewModel.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E430EE92C0F58EF00E09841 /* MakeAlertHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeAlertHelper.swift; sourceTree = "<group>"; };
 		0E5B7CF42BFE25C10014025E /* CGFloat+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+Ext.swift"; sourceTree = "<group>"; };
 		0E5B7CF82BFF5FBD0014025E /* DetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsView.swift; sourceTree = "<group>"; };
 		0E5B7CFA2BFF5FC80014025E /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				0EB860B12BF77A8300E99EC1 /* CollectionViewHelper.swift */,
+				0E430EE92C0F58EF00E09841 /* MakeAlertHelper.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				0E5B7D112C00A6A80014025E /* CombinedCharacter.swift in Sources */,
 				0E5B7CFE2C007B9D0014025E /* NetworkError.swift in Sources */,
 				0E5B7D0D2C0093FE0014025E /* UserDefaultsServie.swift in Sources */,
+				0E430EEA2C0F58EF00E09841 /* MakeAlertHelper.swift in Sources */,
 				0E5B7D0F2C009F740014025E /* CharacterError.swift in Sources */,
 				0EE86BFE2BF73B8F005C5240 /* HomeView.swift in Sources */,
 				0EB860AB2BF772AE00E99EC1 /* CharacterModel.swift in Sources */,

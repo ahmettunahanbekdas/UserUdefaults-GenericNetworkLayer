@@ -7,17 +7,14 @@
 
 import Foundation
 
-// Kullanılacak eylemlerin türlerini temsil eden bir enum.
 enum ActionType {
     case add
     case remove
 }
 
-// UserDefaults işlemlerini yöneten bir enum.
 enum UserDefaultsService {
     static private let defaults = UserDefaults.standard
     
-    // UserDefaults anahtarlarını içeren bir alt enum.
     enum Keys {
         static let favorites = "favorites"
     }
@@ -30,7 +27,7 @@ enum UserDefaultsService {
             defaults.setValue(encodedFavorites, forKey: Keys.favorites)
             return nil
         } catch {
-            return .alreadyInFavorites // Favorileri kaydetme işleminde hata olursa belirtilen hatayı döndürür.
+            return .alreadyInFavorites
         }
     }
     
@@ -50,7 +47,6 @@ enum UserDefaultsService {
         }
     }
     
-    // Favorileri güncelleyen ve hata durumlarını yöneten özel bir fonksiyon.
     static func updateFavorites(favorite: CombinedCharacter, actionType: ActionType, completion: @escaping (CharacterError?) -> ()) {
         getFavorites { result in
             switch result {
@@ -68,7 +64,6 @@ enum UserDefaultsService {
                 }
                 completion(saveFavorites(favorites: favorites))
             case .failure(let error):
-                print("Failed to get favorites: \(error.localizedDescription)")
                 completion(.unableToFavorite)
             }
         }

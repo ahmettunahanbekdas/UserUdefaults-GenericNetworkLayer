@@ -62,7 +62,7 @@
 		0EB860B12BF77A8300E99EC1 /* CollectionViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewHelper.swift; sourceTree = "<group>"; };
 		0EB860B52BF7839F00E99EC1 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		0EC104AA2C05F7E500D6696B /* FavoritesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCell.swift; sourceTree = "<group>"; };
-		0EE86BF62BF73B8F005C5240 /* GenericNetworkLayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenericNetworkLayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EE86BF62BF73B8F005C5240 /* RickAndMorty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RickAndMorty.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EE86BF92BF73B8F005C5240 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EE86BFB2BF73B8F005C5240 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0EE86BFD2BF73B8F005C5240 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -249,7 +249,7 @@
 		0EE86BED2BF73B8F005C5240 = {
 			isa = PBXGroup;
 			children = (
-				0EE86BF82BF73B8F005C5240 /* GenericNetworkLayer */,
+				0EE86BF82BF73B8F005C5240 /* RickAndMorty */,
 				0EE86BF72BF73B8F005C5240 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -257,12 +257,12 @@
 		0EE86BF72BF73B8F005C5240 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0EE86BF62BF73B8F005C5240 /* GenericNetworkLayer.app */,
+				0EE86BF62BF73B8F005C5240 /* RickAndMorty.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0EE86BF82BF73B8F005C5240 /* GenericNetworkLayer */ = {
+		0EE86BF82BF73B8F005C5240 /* RickAndMorty */ = {
 			isa = PBXGroup;
 			children = (
 				0E5B7D0B2C0093D30014025E /* UserDefaults */,
@@ -278,15 +278,15 @@
 				0EB860982BF742A700E99EC1 /* Core */,
 				0EE86C072BF73B90005C5240 /* Info.plist */,
 			);
-			path = GenericNetworkLayer;
+			path = RickAndMorty;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		0EE86BF52BF73B8F005C5240 /* GenericNetworkLayer */ = {
+		0EE86BF52BF73B8F005C5240 /* RickAndMorty */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0EE86C0A2BF73B90005C5240 /* Build configuration list for PBXNativeTarget "GenericNetworkLayer" */;
+			buildConfigurationList = 0EE86C0A2BF73B90005C5240 /* Build configuration list for PBXNativeTarget "RickAndMorty" */;
 			buildPhases = (
 				0EE86BF22BF73B8F005C5240 /* Sources */,
 				0EE86BF32BF73B8F005C5240 /* Frameworks */,
@@ -296,13 +296,13 @@
 			);
 			dependencies = (
 			);
-			name = GenericNetworkLayer;
+			name = RickAndMorty;
 			packageProductDependencies = (
 				0EB860B82BF788D900E99EC1 /* SDWebImage */,
 				0EB860BA2BF788D900E99EC1 /* SDWebImageMapKit */,
 			);
 			productName = GenericNetworkLayer;
-			productReference = 0EE86BF62BF73B8F005C5240 /* GenericNetworkLayer.app */;
+			productReference = 0EE86BF62BF73B8F005C5240 /* RickAndMorty.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -320,7 +320,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 0EE86BF12BF73B8F005C5240 /* Build configuration list for PBXProject "GenericNetworkLayer" */;
+			buildConfigurationList = 0EE86BF12BF73B8F005C5240 /* Build configuration list for PBXProject "RickAndMorty" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -336,7 +336,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				0EE86BF52BF73B8F005C5240 /* GenericNetworkLayer */,
+				0EE86BF52BF73B8F005C5240 /* RickAndMorty */,
 			);
 		};
 /* End PBXProject section */
@@ -537,7 +537,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6HT5X4W7TW;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GenericNetworkLayer/Info.plist;
+				INFOPLIST_FILE = RickAndMorty/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -547,7 +547,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ahmettunahanbekdas.GenericNetworkLayer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ahmettunahanbekdas.RickAndMorty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -564,7 +564,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6HT5X4W7TW;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GenericNetworkLayer/Info.plist;
+				INFOPLIST_FILE = RickAndMorty/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -574,7 +574,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ahmettunahanbekdas.GenericNetworkLayer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ahmettunahanbekdas.RickAndMorty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -585,7 +585,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		0EE86BF12BF73B8F005C5240 /* Build configuration list for PBXProject "GenericNetworkLayer" */ = {
+		0EE86BF12BF73B8F005C5240 /* Build configuration list for PBXProject "RickAndMorty" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0EE86C082BF73B90005C5240 /* Debug */,
@@ -594,7 +594,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0EE86C0A2BF73B90005C5240 /* Build configuration list for PBXNativeTarget "GenericNetworkLayer" */ = {
+		0EE86C0A2BF73B90005C5240 /* Build configuration list for PBXNativeTarget "RickAndMorty" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0EE86C0B2BF73B90005C5240 /* Debug */,

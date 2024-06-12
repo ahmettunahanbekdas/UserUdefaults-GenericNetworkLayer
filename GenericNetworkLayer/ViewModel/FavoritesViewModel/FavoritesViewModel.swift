@@ -16,6 +16,7 @@ protocol FavoritesViewModelDelegate {
  class FavoritesViewModel {
      weak var view: FavoritesViewDelegate?
      var favoriteCharacter: [CombinedCharacter] = []
+     var detailsService = CharacterDetailsService()
 }
 
 
@@ -58,4 +59,18 @@ extension FavoritesViewModel: FavoritesViewModelDelegate {
                 }
             }
         }
+    
+    func didSelectedCharacter(id: Int) {
+        detailsService.getCharacterDetails(id: id) { [weak self] returnedCharacter in
+            guard let self = self else {
+                return
+            }
+            switch returnedCharacter {
+            case .success(let returnedCharacter ):
+                self.view?.favoritesToDetails(character: returnedCharacter)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }

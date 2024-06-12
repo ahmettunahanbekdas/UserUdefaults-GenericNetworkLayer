@@ -11,13 +11,14 @@ protocol FavoritesViewDelegate: AnyObject {
     func configureVC()
     func configureCollectionView()
     func reloadCollectionViewOnMainThread()
+    func favoritesToDetails(character: CharacterDetailsModel)
 }
 
 class FavoritesView: UIViewController {
 
     private var viewModel: FavoritesViewModel!
     private var favoritesCollectionView: UICollectionView!
-    private var selectedCharacter: CombinedCharacter?
+    //private var selectedCharacter: CombinedCharacter?
     
     init(viewModel: FavoritesViewModel) {
         super.init(nibName: nil, bundle: nil)
@@ -66,6 +67,13 @@ extension FavoritesView: FavoritesViewDelegate {
         view.addSubview(favoritesCollectionView)
     }
     
+    func favoritesToDetails(character: CharacterDetailsModel) {
+        DispatchQueue.main.async {
+            let detailsView = DetailsView(character: character)
+            self.navigationController?.pushViewController(detailsView, animated: true)
+        }
+    }
+    
 }
 extension FavoritesView: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -78,6 +86,11 @@ extension FavoritesView: UICollectionViewDataSource, UICollectionViewDelegate {
         cell.delegate = self  
 
          return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let didSelectedCharacter = viewModel.favoriteCharacter[indexPath.item].id!
+        viewModel.didSelectedCharacter(id: didSelectedCharacter)
     }
 }
 

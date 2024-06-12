@@ -104,7 +104,6 @@ class FavoritesCell: UICollectionViewCell {
             return
         }
         delegate?.didTapDeleteButton(selectedForDelete: selectedForDelete)
-        
     }
     
     required init?(coder: NSCoder) {

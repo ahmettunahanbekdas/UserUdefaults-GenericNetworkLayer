@@ -56,9 +56,9 @@ class NetworkManager: NetworkManagerDelegate {
                     completion(.success(jsonData))
                 }
             } catch {
-              //  print("Catch: \(error.localizedDescription)")
-              //  print("Data: \(String(data: data, encoding: .utf8) ?? "No data")")
-              //  completion(.failure(.dataError))
+                print("Catch: \(error.localizedDescription)")
+                print("Data: \(String(data: data, encoding: .utf8) ?? "No data")")
+                completion(.failure(.dataError))
                 print("Catch")
             }
         }

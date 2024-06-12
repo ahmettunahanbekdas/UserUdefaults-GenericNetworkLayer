@@ -25,7 +25,6 @@ enum HTTPMethods: String {
     case patch = "PATCH" 
 }
 
-
 enum EndPoint {
     case getCharacter(page: Int)
     case detailToCharacter(id: Int)

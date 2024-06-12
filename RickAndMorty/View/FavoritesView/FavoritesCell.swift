@@ -52,7 +52,6 @@ class FavoritesCell: UICollectionViewCell {
                 return
             }
             self.characterImageView.sd_setImage(with: url)
-            
         }
     }
     
@@ -97,7 +96,6 @@ class FavoritesCell: UICollectionViewCell {
         ])
     }
     
-    
     @objc func deleteButtonTapped() {
         guard let selectedForDelete = favoriteCharacter else {
             print("selecteForDelete Error")
@@ -110,5 +108,3 @@ class FavoritesCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
-
-

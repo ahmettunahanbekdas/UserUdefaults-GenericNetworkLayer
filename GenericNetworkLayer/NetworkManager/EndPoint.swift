@@ -13,17 +13,16 @@ protocol EndPointDelegate {
     var baseURL: String { get }
     var path: String { get }
     var httpMethod: HTTPMethods { get }
-    var headers: [String: String]? { get } //Projede bir Headers'a sahip değiliz
-    
+    var headers: [String: String]? { get }
     
     func request() -> URLRequest
 }
 
 enum HTTPMethods: String {
     case get = "GET"
-    case post = "POST" //none
-    case delete = "DELETE" //none
-    case patch = "PATCH" //none
+    case post = "POST"
+    case delete = "DELETE"
+    case patch = "PATCH" 
 }
 
 

@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct CharacterDetailsModel: Codable {
     var id: Int?
     var name: String?

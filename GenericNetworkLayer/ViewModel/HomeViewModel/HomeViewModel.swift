@@ -34,7 +34,6 @@ extension HomeViewModel: HomeViewModelDelegate {
                 return
             }
  
-            
             switch result {
             case .success(let character):
                 self.characters.append(contentsOf: character.results!)

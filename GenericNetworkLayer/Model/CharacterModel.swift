@@ -7,19 +7,16 @@
 
 import Foundation
 
-// MARK: - Welcome
 struct CharacterModel: Codable{
     let info: Info?
     let results: [Character]?
 }
 
-// MARK: - Info
 struct Info: Codable {
     let count, pages: Int?
     let next: String?
 }
 
-// MARK: - Result
 struct Character: Codable {
     let id: Int?
     let name: String?

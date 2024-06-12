@@ -113,17 +113,8 @@
 		0E5B7D032C008B870014025E /* Labels */ = {
 			isa = PBXGroup;
 			children = (
-				0E5B7CFF2C007C0E0014025E /* Labels.swift */,
 			);
 			path = Labels;
-			sourceTree = "<group>";
-		};
-		0E5B7D042C008B8D0014025E /* TabBarController */ = {
-			isa = PBXGroup;
-			children = (
-				0E5B7D012C008B840014025E /* TabBarController.swift */,
-			);
-			path = TabBarController;
 			sourceTree = "<group>";
 		};
 		0E5B7D052C008E2F0014025E /* FavoritesView */ = {
@@ -204,7 +195,8 @@
 		0EB860A12BF743DA00E99EC1 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
-				0E5B7D042C008B8D0014025E /* TabBarController */,
+				0E5B7CFF2C007C0E0014025E /* Labels.swift */,
+				0E5B7D012C008B840014025E /* TabBarController.swift */,
 				0E5B7D032C008B870014025E /* Labels */,
 			);
 			path = CustomView;

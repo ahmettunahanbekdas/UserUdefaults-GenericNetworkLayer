@@ -75,7 +75,7 @@ extension FavoritesView: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoritesCell.identifier, for: indexPath) as! FavoritesCell
         cell.setCell(character: viewModel.favoriteCharacter[indexPath.item])
-        cell.delegate = self  // Burada delegate ataması yapıldı
+        cell.delegate = self  
 
          return cell
     }

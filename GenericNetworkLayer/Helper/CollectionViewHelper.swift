@@ -16,8 +16,6 @@ enum CollectionViewHelper {
         return layout
     }
     
-    
-    
     static func createFavoritesFlowLayout() -> UICollectionViewFlowLayout {
         let screenWidth = CGFloat.dWith
         let padding: CGFloat = 16

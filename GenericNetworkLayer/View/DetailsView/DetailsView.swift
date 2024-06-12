@@ -14,6 +14,7 @@ protocol DetailsViewDelegate: AnyObject {
     func configureStatusLabel()
     func configureGenderLabel()
     func configureFavoritesButton()
+    func showAlert(title: String, message: String, action: String)
 }
 
 class DetailsView: UIViewController {
@@ -75,8 +76,6 @@ class DetailsView: UIViewController {
 }
 
 extension DetailsView: DetailsViewDelegate {
-    
-    
     
     func configureImageView(with character: CharacterDetailsModel) {
         view.addSubview(characterImageView)
@@ -150,7 +149,7 @@ extension DetailsView: DetailsViewDelegate {
             print("speciesLabel Error")
             return
         }
-        characterGenderLabel.text = "Status: \(genderLabel)"
+        characterGenderLabel.text = "Gender: \(genderLabel)"
         
         characterGenderLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -166,7 +165,10 @@ extension DetailsView: DetailsViewDelegate {
     
     @objc func favoriteButtonTapped() {
         viewModel.addFavorites()
-        print("Tapped favorites button")
+    }
+    
+    func showAlert(title: String, message: String, action: String) {
+            MakeAlertHelper.alertMassage(action: action, title: title, message: message, style: .alert, vc: self)
     }
     
 }

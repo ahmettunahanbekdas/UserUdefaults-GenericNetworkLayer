@@ -8,7 +8,6 @@
 import Foundation
 import SDWebImage
 
-
 protocol DetailsViewModelDelegate {
     var view: DetailsViewDelegate? { get set }
     func viewDidLoad()
@@ -18,10 +17,10 @@ protocol DetailsViewModelDelegate {
 class DetailsViewModel {
     weak var view: DetailsViewDelegate?
     private let character: CharacterDetailsModel
-
-       init(character: CharacterDetailsModel) {
-           self.character = character
-       }
+    
+    init(character: CharacterDetailsModel) {
+        self.character = character
+    }
 }
 
 extension DetailsViewModel: DetailsViewModelDelegate {
@@ -36,17 +35,16 @@ extension DetailsViewModel: DetailsViewModelDelegate {
     
     func addFavorites() {
         let selectedCharacter = CombinedCharacter(id: character.id, name: character.name, image: character.image)
-        
         UserDefaultsService.updateFavorites(favorite: selectedCharacter, actionType: .add) { [weak self] error in
-            guard self != nil else { return }
+            guard let self = self else { return }
             guard let error = error else {
                 DispatchQueue.main.async {
-                    print("Success")
+                    self.view?.showAlert(title: "Succes!", message: "Character successfully added to favorites", action: "OK")
                 }
                 return
             }
             DispatchQueue.main.async {
-                print("Error: \(error.localizedDescription)")
+                self.view?.showAlert(title: "Error!", message: error.rawValue, action: "OK")
             }
         }
     }

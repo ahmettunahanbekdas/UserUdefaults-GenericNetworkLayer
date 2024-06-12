@@ -36,6 +36,7 @@ extension HomeView: HomeViewDelegate {
         characterCollectionView.register(HomeCell.self, forCellWithReuseIdentifier: HomeCell.identifier)
         view.addSubview(characterCollectionView)
     }
+    
     func reloadData() {
            characterCollectionView.reloadData()
        }
@@ -78,14 +79,3 @@ extension HomeView: UICollectionViewDataSource, UICollectionViewDelegate {
         viewModel.didSelectedCharacter(id: didSelectedCharacter)
     }
 }
-
-//  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//      let offSetY = scrollView.contentOffset.y //Scroll değerimiz
-//      let contentHeight = scrollView.contentSize.height //Tüm scroll uzunluğu
-//      let height = characterCollectionView.frame.height // CollectionView uzunluğu
-//
-//      guard  contentHeight != 0 else {return}
-//      if offSetY >= contentHeight - (2 * height) {
-//          viewModel.getCharacter()
-//      }
-//  }

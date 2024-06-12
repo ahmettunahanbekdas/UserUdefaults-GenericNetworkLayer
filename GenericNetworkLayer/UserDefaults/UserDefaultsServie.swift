@@ -19,7 +19,6 @@ enum UserDefaultsService {
         static let favorites = "favorites"
     }
     
-    // Favorileri kaydeden ve hata durumlarını yöneten özel bir fonksiyon.
     static private func saveFavorites(favorites: [CombinedCharacter]) -> CharacterError? {
         do {
             let encoder = JSONEncoder()
@@ -39,11 +38,11 @@ enum UserDefaultsService {
                 completion(.success(favorites))
             } catch {
                 print("Decoding error: \(error)")
-                completion(.failure(error)) // Favorileri alırken bir hata olursa belirtilen hatayı döndürür.
+                completion(.failure(error))
             }
         } else {
             print("No data found for key \(Keys.favorites)")
-            completion(.success([])) // Favorileri alamazsa boş bir liste döndürür.
+            completion(.success([]))
         }
     }
     
@@ -54,21 +53,17 @@ enum UserDefaultsService {
                 switch actionType {
                 case .add:
                     guard !favorites.contains(favorite) else {
-                        print("Character already in favorites")
+                        completion(.alreadyInFavorites)
                         return
                     }
-                    print("Character added in favorites")
                     favorites.append(favorite)
                 case .remove:
                     favorites.removeAll { $0.name == favorite.name }
                 }
                 completion(saveFavorites(favorites: favorites))
-            case .failure(let error):
+            case .failure(_):
                 completion(.unableToFavorite)
             }
         }
     }
-    
-   
-
 }

@@ -90,7 +90,7 @@ extension DetailsView: DetailsViewDelegate {
         characterImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             characterImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            characterImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: CGFloat.dWith / 20),
+            characterImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: CGFloat.dWith / 10),
             characterImageView.widthAnchor.constraint(equalToConstant: CGFloat.dWith / 2),
             characterImageView.heightAnchor.constraint(equalTo: characterImageView.widthAnchor)
         ])
@@ -145,7 +145,7 @@ extension DetailsView: DetailsViewDelegate {
     
     func configureGenderLabel() {
         view.addSubview(characterGenderLabel)
-        guard let genderLabel = character?.status else {
+        guard let genderLabel = character?.gender else {
             print("speciesLabel Error")
             return
         }

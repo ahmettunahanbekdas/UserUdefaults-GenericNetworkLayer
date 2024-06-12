@@ -24,6 +24,7 @@ final class HomeViewModel {
 extension HomeViewModel: HomeViewModelDelegate {
     func viewDidLoad() {
         view?.configureCollectionView()
+        view?.setupNavigationBar()
         getCharacter()
     }
 

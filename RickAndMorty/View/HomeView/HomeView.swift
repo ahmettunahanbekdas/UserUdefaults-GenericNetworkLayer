@@ -11,6 +11,7 @@ protocol HomeViewDelegate: AnyObject {
     func configureCollectionView()
     func reloadData()
     func toDetailsView(character: CharacterDetailsModel)
+    func setupNavigationBar()
 }
 
 class HomeView: UIViewController {
@@ -46,6 +47,11 @@ extension HomeView: HomeViewDelegate {
             let detailsView = DetailsView(character: character)
             self.navigationController?.pushViewController(detailsView, animated: true)
         }
+    }
+    
+     func setupNavigationBar() {
+        title = "Rick And Morty"  // Başlık buraya eklendi
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 }
 

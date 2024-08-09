@@ -29,6 +29,6 @@ MVVM (Model-View-ViewModel) is an architectural design pattern in software devel
 <img width="220" src="/ScreenShot/ss2.png">
 </p>
 
-## :camera: Screen Recording
+## :movie_camera: Screen Recording
 
 https://github.com/ahmettunahanbekdas/LeagueLens/assets/97003033/83bd97fd-7f64-4928-9fcd-fe4b433af327

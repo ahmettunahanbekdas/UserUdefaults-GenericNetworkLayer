@@ -1,10 +1,11 @@
-# RickAndMorty
- 
+
+# RickAndMorty 
+
 Rick and Morty project, the MVVM architecture was used. A Generic Network Manager was created for network controls. The main page features an interface where characters are listed, and users can click on a character to be
- directed to a detail page. On the detail page, there is a button to add characters to favorites,
- and this action is saved using UserDefaults. On the favorites page, users can view their favorite characters and click on them to navigate back to the detail page. Additionally, characters can be removed from the favorites list if desired.
- 
-##  Key Features
+directed to a detail page. On the detail page, there is a button to add characters to favorites,and this action is saved using UserDefaults. On the favorites page, users can view their favorite characters and click on them to navigate back to the detail page. Additionally, characters can be removed from the favorites list if desired.
+
+
+## :nut_and_bolt: Key Features
 
 **Architecture:** MVVM 
 MVVM (Model-View-ViewModel) is an architectural design pattern in software development, dividing applications into three key components:
@@ -22,30 +23,17 @@ MVVM (Model-View-ViewModel) is an architectural design pattern in software devel
 
 **Library:** SDWebImage
 
-##  Components
 
-### Structure
-- Memory Management 
-- Programmatic UI
-- UserDefaults
-- Pagination
-- Dispatch Group
-- Generic Network Layer
+## :camera: Screen Recording
 
-### iOS
-- CollectionView
-- TabBar Controller
-- Navigation Controller
-- Alert
-  
+https://github.com/ahmettunahanbekdas/LeagueLens/assets/97003033/83bd97fd-7f64-4928-9fcd-fe4b433af327
+
+
 ## :camera: Screenshots
 
 <p float="left">
-<img width="350" src="/ScreenShot/ss0.png">
-<img width="350" src="/ScreenShot/ss1.png">
-<img width="350" src="/ScreenShot/ss2.png">
+<img width="200" src="/ScreenShot/ss0.png">
+<img width="200" src="/ScreenShot/ss1.png">
+<img width="200" src="/ScreenShot/ss2.png">
 </p>
 
-## :movie_camera: Video
-
-https://github.com/ahmettunahanbekdas/LeagueLens/assets/97003033/83bd97fd-7f64-4928-9fcd-fe4b433af327

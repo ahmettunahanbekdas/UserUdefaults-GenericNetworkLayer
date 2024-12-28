@@ -1,4 +1,4 @@
-# UserDefaults and Unit Testing Example
+# UserDefaults and Unit Testing Example on RickAndMortyAPI
 
 This project demonstrates how to effectively use **UserDefaults** for data persistence in iOS applications and incorporates **Unit Testing** to ensure the reliability of the implementation.
 

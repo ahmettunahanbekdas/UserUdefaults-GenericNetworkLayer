@@ -1,46 +1,46 @@
-# UserDefaults and Unit Testing Example on RickAndMortyAPI
+# Generic Network Layer and UserDefaults Example With RickAndMory API
 
-This project demonstrates how to effectively use **UserDefaults** for data persistence in iOS applications and incorporates **Unit Testing** to ensure the reliability of the implementation.
-
-## Why Use UserDefaults?
-
-**UserDefaults** is a lightweight and efficient way to store small amounts of data that need to persist across app launches. It is commonly used for:
-
-- Storing user preferences, such as theme selection or language settings.
-- Saving simple application states, like whether a tutorial has been completed.
-- Caching small amounts of frequently used data, such as user credentials or settings.
-
-### Advantages of UserDefaults:
-- **Simplicity**: Easy to use for storing and retrieving data with key-value pairs.
-- **Efficiency**: Lightweight and optimized for small-scale data storage.
-- **Persistence**: Data remains available even after the app is closed and reopened.
+This project demonstrates the implementation of a **Generic Network Layer** for reusable and scalable API communication and the integration of **UserDefaults** for lightweight data persistence in iOS applications.
 
 ## Features
 
-- **UserDefaults Integration**:
-  - Save, retrieve, and delete user preferences and small data items.
-  - Provides a lightweight and efficient solution for data persistence.
+- **Generic Network Layer**:
+  - Reusable, type-safe, and scalable network requests.
+  - Supports HTTP methods such as GET and POST.
+  - Built using `URLSession` with customizable request and response handling.
 
-- **Unit Testing**:
-  - Comprehensive test coverage for UserDefaults operations.
-  - Mocking and testing custom wrappers for UserDefaults to ensure reliability.
+- **UserDefaults Integration**:
+  - Simple key-value storage for user preferences and small data items.
+  - Encapsulated in a custom wrapper for better modularity and reusability.
+
+## Why Use This Project?
+
+This project offers a modular and efficient architecture for handling common development tasks:
+
+### Advantages of the Generic Network Layer:
+- **Reusability**: A single network manager that can handle multiple API requests.
+- **Type-Safety**: Ensures data decoding with Swift's `Codable` protocol.
+- **Scalability**: Designed to easily expand for additional HTTP methods or advanced networking features.
+
+### Advantages of UserDefaults:
+- **Lightweight Persistence**: Ideal for saving small amounts of user-specific data.
+- **Simplicity**: Easy-to-use API for data storage and retrieval.
+- **Custom Wrapping**: Enhances testability and organizes code better.
 
 ## Technologies Used
 
 This project leverages the following technologies:
 
 - **Swift**: Programming language.
-- **XCTest**: For writing and running unit tests.
-- **UserDefaults**: For persistent data storage.
+- **URLSession**: For handling network requests.
+- **UserDefaults**: For persistent local storage.
 
 ## Architecture and Development Principles
 
-The following software architecture and principles are applied:
+- **Generic Network Layer**:
+  - Encapsulates network logic into a reusable and type-safe component.
+  - Supports customizable request building and response parsing.
 
 - **Custom UserDefaults Wrapper**:
-  - Encapsulates UserDefaults operations for better modularity and testability.
-  - Allows type-safe and reusable methods for data handling.
-
-- **Unit Testing**:
-  - Includes mock UserDefaults for isolated testing.
-  - Verifies data saving, retrieval, and deletion.
+  - Provides a clean and modular interface for accessing UserDefaults.
+  - Ensures type-safety and enhances code readability.
